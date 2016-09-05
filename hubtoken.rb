@@ -8,7 +8,6 @@ class Hubtoken < Formula
   head "https://github.com/gofodder/hubtoken.git"
 
   depends_on "go" => :build
-  depends_on "godep" => :build
 
   def install
     ENV["GOPATH"] = buildpath
@@ -16,7 +15,6 @@ class Hubtoken < Formula
     dir.install Dir["*"]
     ln_s buildpath/"src", dir
     cd dir do
-      system "godep", "restore"
       system "go", "build", "-o", bin/"hubtoken", "main.go"
     end
   end
