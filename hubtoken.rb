@@ -15,6 +15,7 @@ class Hubtoken < Formula
     dir.install Dir["*"]
     ln_s buildpath/"src", dir
     cd dir do
+      system "go", "get", "./..."
       system "go", "build", "-o", bin/"hubtoken", "main.go"
     end
   end
